@@ -1,0 +1,307 @@
+{
+    "@@locale": "en",
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button sign for some dialogs and modals"
+    },
+    "days": "{n, plural, =0 {{n} days} =1 {{n} day} =2 {{n} days} few {{n} days} many {{n} days} many {{n} days} other {{n} days}",
+    "@days": {
+        "description": "Days plural forms",
+        "placeholders": {
+            "n": {
+                "description": "Days count",
+                "example": "3"
+            }
+        }
+    },
+    "share": "Share",
+    "@share": {
+        "description": "Share button in different places"
+    },
+    "retry": "Retry",
+    "@retry": {
+        "description": "Retry button for errors"
+    },
+    "accounts": "Accounts",
+    "@accounts": {
+        "description": "Accounts button at the app bar",
+        "context": "AppBar"
+    },
+    "videoTitle": "Video",
+    "@videoTitle": {
+        "description": "App titlebar when a video opened",
+        "context": "AppBar"
+    },
+    "noSignedInAccounts": "Accounts you choose to remember will appear here",
+    "@noSignedInAccounts": {
+        "description": "The text that appears if the user never used remember me checkbox and opens the saved accounts section",
+        "context": "Accounts"
+    },
+    "howToUnloginTitle": "Hint",
+    "@howToUnloginTitle": {
+        "description": "Title for the user account list promo that explains how to unlogin",
+        "context": "Accounts:How To Unlogin Promo"
+    },
+    "howToUnloginText": "Swipe to remove stored items",
+    "@howToUnloginText": {
+        "description": "Text for the user account list promo that explains how to unlogin",
+        "context": "Accounts:How To Unlogin Promo"
+    },
+    "yourVideos": "Videos",
+    "@yourVideos": {
+        "description": "Videos section title",
+        "context": "NavBar"
+    },
+    "discordMode": "Discord",
+    "@discordMode": {
+        "description": "Discord mode title",
+        "context": "NavBar"
+    },
+    "statistics": "Statistics",
+    "@statistics": {
+        "description": "Statistics section title",
+        "context": "NavBar"
+    },
+    "switchAccount": "Switch account",
+    "@switchAccount": {
+        "description": "A button for re-entering user account handle",
+        "context": "NavBar"
+    },
+    "welcomeTitle": "Welcome to Video Edit Bot",
+    "@welcomeTitle": {
+        "descripton": "Welcoming title",
+        "context": "Videos:Welcome"
+    },
+    "welcomeDescription": "Your videos are accessible here even if they are not uploaded to Twitter, for example if the video is too large, or if Twitter rate-limits the bot from tweeting",
+    "@welcomeDescription": {
+        "descripton": "Welcoming description",
+        "context": "Videos:Welcome"
+    },
+    "twitterUsername": "Twitter Username",
+    "@twitterUsername": {
+        "descripton": "Twitter username text input placeholder",
+        "context": "Videos:Welcome:Username Input"
+    },
+    "rememberMe": "Remember me",
+    "@rememberMe": {
+        "descripton": "\"Remember me\" checkbox so user won't be asked for their Twitter handle everytime",
+        "context": "Videos:Welcome:Username Input"
+    },
+    "botPromoSign": "Tag @videoeditbot on Twitter",
+    "@botPromoSign": {
+        "descripton": "Promo that describes the bot on Twitter",
+        "context": "Videos:Welcome:Twitter Promo"
+    },
+    "botPromoSignButton": "If the bot doesn't reply, check for the result here",
+    "@botPromoSignButton": {
+        "descripton": "Promo that describes the bot on Twitter description",
+        "context": "Videos:Welcome:Twitter Promo"
+    },
+    "commandsHelpSign": "Check out available features",
+    "@commandsHelpSign": {
+        "descripton": "Link for bot docs",
+        "context": "Videos:Welcome:Commands help"
+    },
+    "commandsHelpDescription": "Master all the bot with the growing list of arguments",
+    "@commandsHelpDescription": {
+        "descripton": "Link for bot docs",
+        "context": "Videos:Welcome:Commands help"
+    },
+    "emptyUsernameError": "Please enter a username",
+    "@emptyUsernameError": {
+        "descripton": "Message that occurs when user tries to submit a request with empty username",
+        "context": "Videos:Message:Empty Username"
+    },
+    "notFoundTitle": "User not found",
+    "@notFoundTitle": {
+        "descripton": "Title of the message that explains that entered user is not found",
+        "context": "Videos:Message:Not Found"
+    },
+    "notFoundText": "Please make sure you entered your username correctly and try again",
+    "@notFoundText": {
+        "descripton": "Text of the message that explains that entered user is not found",
+        "context": "Videos:Message:Not Found"
+    },
+    "serverErrorTitle": "Server error",
+    "@serverErrorTitle": {
+        "descripton": "Title of the message that explains that a server error just happened",
+        "context": "Videos:Message:Server Error"
+    },
+    "serverErrorText": "A server error occurred while trying to fetch your content. Please try again later",
+    "@serverErrorText": {
+        "descripton": "Text of the message that explains that a server error just happened",
+        "context": "Videos:Message:Server Error"
+    },
+    "unknownErrorTitle": "Unknown error",
+    "@unknownErrorTitle": {
+        "descripton": "Title of the message that explains that an unknown error just happened",
+        "context": "Videos:Message:Unknown Error"
+    },
+    "tryAgainLater": "Try again later",
+    "@tryAgainLater": {
+        "descripton": "Generic text that suit for almost any error",
+        "context": "Videos:Message:Unknown Error"
+    },
+    "moreVideos": "More videos",
+    "@moreVideos": {
+        "description": "Title of the block with other videos of this user",
+        "context": "Videos:Video"
+    },
+    "download": "Download",
+    "@download": {
+        "description": "Download video button",
+        "context": "Videos:Video"
+    },
+    "videoInfo": "Info",
+    "@videoInfo": {
+        "description": "Video details expansion button",
+        "context": "Videos:Video"
+    },
+    "willBeDeletedIn": "Will be deleted in {days}",
+    "@willBeDeletedIn": {
+        "description": "Title for deletion warning",
+        "context": "Videos:Video",
+        "placeholders": {
+            "days": {
+                "description": "days amount",
+                "example": "3 days"
+            }
+        }
+    },
+    "notDeletedDaysAgo": "Should've been deleted {days} ago",
+    "@notDeletedDaysAgo": {
+        "description": "Title for deletion warning",
+        "context": "Videos:Video",
+        "placeholders": {
+            "days": {
+                "description": "days amount",
+                "example": "3 days"
+            }
+        }
+    },
+    "notDeletedRecently": "Should've been deleted recently",
+    "@notDeletedRecently": {
+        "description": "Title for deletion warning",
+        "context": "Videos:Video"
+    },
+    "willBeDeletedSoon": "Will be deleted soon",
+    "@willBeDeletedSoon": {
+        "description": "Title for deletion warning if it's less than 24h",
+        "context": "Videos:Video"
+    },
+    "willBeDeletedInExplainer": "We keep videos only for 30 days",
+    "@willBeDeletedInExplainer": {
+        "description": "Explanation for deletion warning",
+        "context": "Videos:Video"
+    },
+    "videoNotFoundTitle": "Video not found",
+    "@videoNotFoundTitle": {
+        "description": "Title of a message that explains that the requested video is not found",
+        "context": "Videos:Video:Message:Not found"
+    },
+    "videoNotFoundText": "Sorry, this video wasn't found. Videos are deleted after 30 days, so make sure you download what you want to keep beforehand",
+    "@videoNotFoundText": {
+        "description": "Text of a message that explains that the requested video is not found",
+        "context": "Videos:Video:Message:Not found"
+    },
+    "videoServerErrorTitle": "Server Error",
+    "@videoServerErrorTitle": {
+        "description": "Title of a message that explains that a server error just happened",
+        "context": "Videos:Video:Message:Server Error"
+    },
+    "videoServerErrorText": "A server error occurred while trying to fetch your content. Please try again later",
+    "@videoServerErrorText": {
+        "description": "Text of a message that explains that a server error just happened",
+        "context": "Videos:Video:Message:Server Error"
+    },
+    "videoUnknownErrorTitle": "Unknown Error",
+    "@videoUnknownErrorTitle": {
+        "description": "Title of a message that explains that an unknown error just happened",
+        "context": "Videos:Video:Message:Unknown Error"
+    },
+    "discordWelcomeTitle": "Video Edit Bot for Discord",
+    "@discordWelcomeTitle": {
+        "descripton": "Welcoming title for Discord mode",
+        "context": "Discord:Welcome"
+    },
+    "discordWelcomeDescription": "Add Video Edit Bot to your Discord server and allow users to edit media inline",
+    "@discordWelcomeDescription": {
+        "descripton": "Welcoming description for Discord mode",
+        "context": "Discord:Welcome"
+    },
+    "discordServerPromoSign": "Join the Video Edit Bot Discord server!",
+    "@discordServerPromoSign": {
+        "descripton": "Promo that asks to join our Discord server",
+        "context": "Discord:Welcome:Discord Server Promo"
+    },
+    "discordServerPromoButton": "Join VideoEditBot Discord Server to leave feedback and explore more features",
+    "@discordServerPromoButton": {
+        "descripton": "Action button sign to join our Discord description",
+        "context": "Discord:Welcome:Discord Server Promo"
+    },
+    "discordEnterIdTitle": "Already using Video Edit Bot for Discord?",
+    "@discordEnterIdTitle": {
+        "descripton": "Enter Discord server ID block title",
+        "context": "Discord:Welcome:Discord Server ID"
+    },
+    "discordEnterIdDescription": "If you know your server's ID, you can paste it in here to get access to your most recent videos.",
+    "@discordEnterIdDescription": {
+        "descripton": "Enter Discord server ID block description",
+        "context": "Discord:Welcome:Discord Server ID"
+    },
+    "discordServerId": "Discord Server ID",
+    "@discordServerId": {
+        "descripton": "Placeholder for Discord server ID input",
+        "context": "Discord:Welcome:Discord Server ID"
+    },
+    "discordEmptyUsernameError": "Please enter a Discord Server ID",
+    "@discordEmptyUsernameError": {
+        "descripton": "Message that occurs when user tries to submit a request with empty Discord Server ID",
+        "context": "Discord:Message:Empty Username"
+    },
+    "discordNotFoundTitle": "Discord server not found",
+    "@discordNotFoundTitle": {
+        "descripton": "Title of the message that explains that entered Discord server is not found",
+        "context": "Discord:Message:Not Found"
+    },
+    "discordNotFoundText": "Please make sure you entered the Discord server correctly and try again",
+    "@discordNotFoundText": {
+        "descripton": "Text of the message that explains that entered Discord server is not found",
+        "context": "Discord:Message:Not Found"
+    },
+    "cpu": "CPU",
+    "@cpu": {
+        "description": "CPU statistics sign",
+        "context": "Statistics:CPU"
+    },
+    "totalUsage": "Total usage",
+    "@totalUsage": {
+        "description": "Total CPU usage sign",
+        "context": "Statistics:CPU"
+    },
+    "memory": "Memory",
+    "@memory": {
+        "description": "Memory usage statistics sign",
+        "context": "Statistics:Memory"
+    },
+    "storage": "Storage",
+    "@storage": {
+        "description": "Storage usage statistics sign",
+        "context": "Statistics:Storage"
+    }, 
+    "statisticsServerErrorTitle": "Statistics Error",
+    "@statisticsServerErrorTitle": {
+        "description": "Title of a message that explains that statistics fetch just failed",
+        "context": "Statistics:Message:Server Error"
+    },
+    "statisticsServerErrorText": "The server encountered an internal error while fetching server statistics, please try again later",
+    "@statisticsServerErrorText": {
+        "description": "Text of a message that explains that statistics fetch just failed",
+        "context": "Statistics:Message:Server Error"
+    },
+    "statisticsUnknownErrorTitle": "Statistics Error",
+    "@statisticsUnknownErrorTitle": {
+        "description": "Title of a message that explains that statistics fetch just failed because of an unknown error",
+        "context": "Statistics:Message:Unknown Error"
+    }
+}
