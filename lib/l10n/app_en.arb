@@ -4,6 +4,10 @@
     "@ok": {
         "description": "OK button sign for some dialogs and modals"
     },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Generic locale to cancel modals and actions"
+    },
     "days": "{n, plural, =0 {{n} days} =1 {{n} day} =2 {{n} days} few {{n} days} many {{n} days} many {{n} days} other {{n} days}",
     "@days": {
         "description": "Days plural forms",
@@ -32,6 +36,11 @@
         "description": "App titlebar when a video opened",
         "context": "AppBar"
     },
+    "rememberedAccounts": "Remembered Accounts",
+    "@rememberedAccounts": {
+        "description": "Remembered accounts title",
+        "context": "Accounts"
+    },
     "noSignedInAccounts": "Accounts you choose to remember will appear here",
     "@noSignedInAccounts": {
         "description": "The text that appears if the user never used remember me checkbox and opens the saved accounts section",
@@ -46,6 +55,16 @@
     "@howToUnloginText": {
         "description": "Text for the user account list promo that explains how to unlogin",
         "context": "Accounts:How To Unlogin Promo"
+    },
+    "forgetTwitter": "Forget Twitter",
+    "@forgetTwitter": {
+        "description": "Button to forget Twitter username, used on iOS currently",
+        "context": "Accounts"
+    },
+    "forgetDiscord": "Forget Discord",
+    "@forgetDiscord": {
+        "description": "Button to forget Discord server, used on iOS currently",
+        "context": "Accounts"
     },
     "yourVideos": "Videos",
     "@yourVideos": {
@@ -288,7 +307,7 @@
     "@storage": {
         "description": "Storage usage statistics sign",
         "context": "Statistics:Storage"
-    }, 
+    },
     "statisticsServerErrorTitle": "Statistics Error",
     "@statisticsServerErrorTitle": {
         "description": "Title of a message that explains that statistics fetch just failed",

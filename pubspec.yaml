@@ -23,6 +23,8 @@ dependencies:
   flick_video_player: ^0.1.1
   sliding_up_panel: ^1.0.2
   uni_links: ^0.4.0
+  flutter_platform_widgets: ^0.70.1
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   pedantic: ^1.9.0

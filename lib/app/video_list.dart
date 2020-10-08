@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:videoeditbot_app/services/api/global_queue.dart';
 import 'package:videoeditbot_app/services/api/types.dart';
-import 'package:videoeditbot_app/services/functions/downloadVideo.dart';
+import 'package:videoeditbot_app/services/functions/download_video.dart';
 import 'package:videoeditbot_app/services/functions/share.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:videoeditbot_app/video.dart';
@@ -29,7 +30,7 @@ class _VideoListViewState extends State<VideoListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(isDiscordMode
+        title: PlatformText(isDiscordMode
             ? AppLocalizations.of(context).discordMode
             : username + "'s " + AppLocalizations.of(context).yourVideos),
       ),
@@ -119,13 +120,13 @@ class _VideoListState extends State<VideoList> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      PlatformText(
                         title,
                         style: TextStyle(fontSize: 30),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: Text(
+                        child: PlatformText(
                           subtitle,
                           style: TextStyle(fontSize: 15),
                         ),
@@ -135,7 +136,7 @@ class _VideoListState extends State<VideoList> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text(AppLocalizations.of(context).retry),
+                          child: PlatformText(AppLocalizations.of(context).retry),
                         ),
                     ],
                   ),
@@ -270,13 +271,13 @@ class _VideoListItemState extends State<VideoListItem> {
                     children: <Widget>[
                       ListTile(
                           leading: Icon(Icons.file_download),
-                          title: Text(AppLocalizations.of(context).download),
+                          title: PlatformText(AppLocalizations.of(context).download),
                           onTap: () {
                             downloadVideoLink(data);
                           }),
                       ListTile(
                         leading: Icon(Icons.share),
-                        title: Text(AppLocalizations.of(context).share),
+                        title: PlatformText(AppLocalizations.of(context).share),
                         onTap: () {
                           shareVideoLink(data);
                         },

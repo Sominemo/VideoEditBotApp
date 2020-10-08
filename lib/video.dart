@@ -1,10 +1,13 @@
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:video_player/video_player.dart';
 import 'package:videoeditbot_app/services/api/types.dart';
-import 'package:videoeditbot_app/services/functions/downloadVideo.dart';
+import 'package:videoeditbot_app/services/functions/download_video.dart';
 import 'package:videoeditbot_app/services/functions/get_video.dart';
 import 'package:videoeditbot_app/services/functions/share.dart';
 import 'package:videoeditbot_app/services/icons/veb_icons.dart';
@@ -100,8 +103,13 @@ class _VideoScreenState extends State<VideoScreen> {
                   children: [
                     SizedBox(width: 10),
                     OutlineButton.icon(
-                      icon: Icon(Icons.file_download),
-                      label: Text(AppLocalizations.of(context).download),
+                      icon: PlatformWidget(
+                        material: (_, __) => Icon(Icons.file_download),
+                        cupertino: (_, __) =>
+                            Icon(CupertinoIcons.square_arrow_down),
+                      ),
+                      label:
+                          PlatformText(AppLocalizations.of(context).download),
                       onPressed: () {
                         downloadVideoLink(data);
                       },
@@ -109,8 +117,8 @@ class _VideoScreenState extends State<VideoScreen> {
                     ),
                     SizedBox(width: 10),
                     OutlineButton.icon(
-                      icon: Icon(Icons.share),
-                      label: Text(AppLocalizations.of(context).share),
+                      icon: Icon(PlatformIcons(context).share),
+                      label: PlatformText(AppLocalizations.of(context).share),
                       onPressed: () {
                         shareVideoLink(data);
                       },
@@ -118,8 +126,9 @@ class _VideoScreenState extends State<VideoScreen> {
                     ),
                     SizedBox(width: 10),
                     OutlineButton.icon(
-                      icon: Icon(Icons.info_outline),
-                      label: Text(AppLocalizations.of(context).videoInfo),
+                      icon: Icon(PlatformIcons(context).info),
+                      label:
+                          PlatformText(AppLocalizations.of(context).videoInfo),
                       onPressed: () {
                         if (sheetController.isPanelClosed) {
                           sheetController.open();
@@ -143,8 +152,8 @@ class _VideoScreenState extends State<VideoScreen> {
                 child:
                     Icon(isDiscordMode ? VebIcons.discord : VebIcons.twitter),
               ),
-              title: Text(username),
-              subtitle: Text(isDiscordMode ? 'Discord' : 'Twitter'),
+              title: PlatformText(username),
+              subtitle: PlatformText(isDiscordMode ? 'Discord' : 'Twitter'),
             ),
           ),
           FutureBuilder(
@@ -155,7 +164,7 @@ class _VideoScreenState extends State<VideoScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Center(
-                      child: Text(
+                      child: PlatformText(
                           AppLocalizations.of(context).videoUnknownErrorTitle),
                     ),
                   ),
@@ -203,10 +212,10 @@ class _VideoScreenState extends State<VideoScreen> {
                       leading: CircleAvatar(
                         child: Icon(Icons.timelapse),
                       ),
-                      title: Text(
+                      title: PlatformText(
                         del,
                       ),
-                      subtitle: Text(AppLocalizations.of(context)
+                      subtitle: PlatformText(AppLocalizations.of(context)
                           .willBeDeletedInExplainer),
                     ),
                   ),
@@ -220,7 +229,7 @@ class _VideoScreenState extends State<VideoScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).videoTitle),
+        title: PlatformText(AppLocalizations.of(context).videoTitle),
       ),
       body: sheet,
     );

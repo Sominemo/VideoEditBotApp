@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:videoeditbot_app/app/video_list.dart';
 import 'package:videoeditbot_app/services/icons/veb_icons.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:videoeditbot_app/services/settings/settings.dart';
+import 'package:videoeditbot_app/widgets/cupertino_ckechmark.dart';
 
 class VideosWelcome extends StatefulWidget {
   VideosWelcome(this.transitionMethod, this.isDiscordMode);
@@ -24,6 +27,7 @@ class _VideosWelcomeState extends State<VideosWelcome> {
 
   bool saveOnSubmit = false;
   String input = '';
+  TextEditingController controller;
 
   @override
   void initState() {
@@ -32,7 +36,15 @@ class _VideosWelcomeState extends State<VideosWelcome> {
         ) ??
         '';
 
+    controller = TextEditingController(text: input);
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   void searchVideos() {
@@ -40,7 +52,7 @@ class _VideosWelcomeState extends State<VideosWelcome> {
     if (input.isEmpty) {
       Scaffold.of(context).showSnackBar(
         SnackBar(
-          content: Text(isDiscordMode
+          content: PlatformText(isDiscordMode
               ? AppLocalizations.of(context).discordEmptyUsernameError
               : AppLocalizations.of(context).emptyUsernameError),
         ),
@@ -117,42 +129,65 @@ class _VideosWelcomeState extends State<VideosWelcome> {
         ),
         padding: EdgeInsets.only(bottom: promos.isNotEmpty ? 15.0 : 0),
       ),
-      Text(
+      PlatformText(
         (isDiscordMode
             ? AppLocalizations.of(context).discordWelcomeTitle
             : AppLocalizations.of(context).welcomeTitle),
         style: TextStyle(
-          fontSize: DefaultTextStyle.of(context).style.fontSize * 2,
+          fontSize: DefaultTextStyle.of(context).style.fontSize * 1.5,
         ),
       ),
       Padding(
         padding: EdgeInsets.symmetric(vertical: 20.0),
-        child: Text(isDiscordMode
+        child: PlatformText(isDiscordMode
             ? AppLocalizations.of(context).discordEnterIdDescription
             : AppLocalizations.of(context).welcomeDescription),
       ),
       Row(
         children: [
           Expanded(
-            child: TextFormField(
-              initialValue: saved,
-              onChanged: (v) {
-                setState(() {
-                  input = v;
-                });
+            child: PlatformWidget(
+              material: (context, target) {
+                return TextFormField(
+                  controller: controller,
+                  onChanged: (v) {
+                    setState(() {
+                      input = v;
+                    });
+                  },
+                  onFieldSubmitted: (v) {
+                    setState(() {
+                      input = v;
+                    });
+                    searchVideos();
+                  },
+                  decoration: InputDecoration(
+                    labelText: (isDiscordMode
+                        ? AppLocalizations.of(context).discordServerId
+                        : AppLocalizations.of(context).twitterUsername),
+                    border: OutlineInputBorder(borderSide: BorderSide()),
+                  ),
+                );
               },
-              onFieldSubmitted: (v) {
-                setState(() {
-                  input = v;
-                });
-                searchVideos();
+              cupertino: (context, target) {
+                return CupertinoTextField(
+                  controller: controller,
+                  onChanged: (v) {
+                    setState(() {
+                      input = v;
+                    });
+                  },
+                  onSubmitted: (v) {
+                    setState(() {
+                      input = v;
+                    });
+                    searchVideos();
+                  },
+                  placeholder: (isDiscordMode
+                      ? AppLocalizations.of(context).discordServerId
+                      : AppLocalizations.of(context).twitterUsername),
+                );
               },
-              decoration: InputDecoration(
-                labelText: (isDiscordMode
-                    ? AppLocalizations.of(context).discordServerId
-                    : AppLocalizations.of(context).twitterUsername),
-                border: OutlineInputBorder(borderSide: BorderSide()),
-              ),
             ),
           ),
           Padding(
@@ -166,18 +201,36 @@ class _VideosWelcomeState extends State<VideosWelcome> {
           )
         ],
       ),
-      CheckboxListTile(
-        value: saveOnSubmit,
-        onChanged: (v) {
-          setState(() {
-            saveOnSubmit = v;
-          });
-        },
-        activeColor: Theme.of(context).accentColor,
-        checkColor: Theme.of(context).accentIconTheme.color,
-        title: Text(AppLocalizations.of(context).rememberMe),
-        controlAffinity: ListTileControlAffinity.leading,
-        contentPadding: EdgeInsets.zero,
+      PlatformWidget(
+        material: (_, __) => CheckboxListTile(
+          value: saveOnSubmit,
+          onChanged: (v) {
+            setState(() {
+              saveOnSubmit = v;
+            });
+          },
+          activeColor: Theme.of(context).accentColor,
+          checkColor: Theme.of(context).accentIconTheme.color,
+          title: PlatformText(AppLocalizations.of(context).rememberMe),
+          controlAffinity: ListTileControlAffinity.leading,
+          contentPadding: EdgeInsets.zero,
+        ),
+        cupertino: (_, __) => Row(
+          children: [
+            CupertinoCheckmark(
+              defaultValue: saveOnSubmit,
+              onChanged: (v) {
+                setState(() {
+                  saveOnSubmit = v;
+                });
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: PlatformText(AppLocalizations.of(context).rememberMe),
+            )
+          ],
+        ),
       ),
     ];
 
@@ -232,8 +285,8 @@ class DismissiblePromo extends StatelessWidget {
                 child: icon,
                 padding: EdgeInsets.all(5),
               )),
-        title: Text(title),
-        subtitle: Text(subtitle),
+        title: PlatformText(title),
+        subtitle: PlatformText(subtitle),
         onTap: tap,
       ),
     );

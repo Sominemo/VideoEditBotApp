@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math' show sqrt, max;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:videoeditbot_app/services/api/global_queue.dart';
 import 'package:videoeditbot_app/services/api/types.dart';
 import 'package:videoeditbot_app/services/icons/veb_icons.dart';
@@ -52,13 +53,13 @@ class _StatisticsState extends State<Statistics> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      PlatformText(
                         title,
                         style: TextStyle(fontSize: 30),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: Text(
+                        child: PlatformText(
                           subtitle,
                           style: TextStyle(fontSize: 15),
                         ),
@@ -67,7 +68,7 @@ class _StatisticsState extends State<Statistics> {
                         onPressed: () {
                           transitionMethod(Statistics(transitionMethod));
                         },
-                        child: Text(AppLocalizations.of(context).retry),
+                        child: PlatformText(AppLocalizations.of(context).retry),
                       ),
                     ],
                   ),
@@ -157,8 +158,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     leading: CircleAvatar(
                       child: Icon(Icons.memory),
                     ),
-                    title: Text(body['cpuName']),
-                    subtitle: Text('${AppLocalizations.of(context).cpu}  |  ${body['cpuUsageTotal']}%'),
+                    title: PlatformText(body['cpuName']),
+                    subtitle: PlatformText('${AppLocalizations.of(context).cpu}  |  ${body['cpuUsageTotal']}%'),
                   ),
                   Divider(),
                   Padding(
@@ -188,11 +189,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       title: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('${body['memoryUsage']}  /'),
-                          Text(' ${body['memoryCapacity']}'),
+                          PlatformText('${body['memoryUsage']}  /'),
+                          PlatformText(' ${body['memoryCapacity']}'),
                         ],
                       ),
-                      subtitle: Text(AppLocalizations.of(context).memory),
+                      subtitle: PlatformText(AppLocalizations.of(context).memory),
                     ),
                     TweenAnimationBuilder(
                       tween: IntTween(
@@ -221,11 +222,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       title: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('${body['storageUsage']}  /'),
-                          Text(' ${body['storageCapacity']}'),
+                          PlatformText('${body['storageUsage']}  /'),
+                          PlatformText(' ${body['storageCapacity']}'),
                         ],
                       ),
-                      subtitle: Text(AppLocalizations.of(context).storage),
+                      subtitle: PlatformText(AppLocalizations.of(context).storage),
                     ),
                     TweenAnimationBuilder(
                       tween: IntTween(
@@ -277,7 +278,7 @@ class CpuCoreBlock extends StatelessWidget {
       duration: Duration(seconds: 2),
       color: Theme.of(context).accentColor.withOpacity(usage / 100),
       child: Center(
-        child: Text(usage.toString()),
+        child: PlatformText(usage.toString()),
       ),
     );
   }
