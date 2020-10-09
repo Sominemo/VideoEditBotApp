@@ -1,6 +1,7 @@
 import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:videoeditbot_app/services/api/global_queue.dart';
@@ -28,8 +29,8 @@ class _VideoListViewState extends State<VideoListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: PlatformText(isDiscordMode
             ? AppLocalizations.of(context).discordMode
             : username + "'s " + AppLocalizations.of(context).yourVideos),
@@ -136,7 +137,8 @@ class _VideoListState extends State<VideoList> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: PlatformText(AppLocalizations.of(context).retry),
+                          child:
+                              PlatformText(AppLocalizations.of(context).retry),
                         ),
                     ],
                   ),
@@ -247,13 +249,15 @@ class _VideoListItemState extends State<VideoListItem> {
       child: InkWrapper(
         child: thumb,
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
+          Navigator.of(context, rootNavigator: true)
+              .push(
+            platformPageRoute(
+              context: context,
               builder: (context) =>
                   VideoScreen(data, username, isDiscordMode, thumb: thumb),
             ),
-          ).then((value) {
+          )
+              .then((value) {
             FlutterStatusbarcolor.setNavigationBarColor(color, animate: true);
           });
         },
@@ -271,7 +275,8 @@ class _VideoListItemState extends State<VideoListItem> {
                     children: <Widget>[
                       ListTile(
                           leading: Icon(Icons.file_download),
-                          title: PlatformText(AppLocalizations.of(context).download),
+                          title: PlatformText(
+                              AppLocalizations.of(context).download),
                           onTap: () {
                             downloadVideoLink(data);
                           }),

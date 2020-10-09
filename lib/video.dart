@@ -227,8 +227,8 @@ class _VideoScreenState extends State<VideoScreen> {
       ),
     );
 
-    return Scaffold(
-      appBar: AppBar(
+    return PlatformScaffold(
+      appBar: PlatformAppBar(
         title: PlatformText(AppLocalizations.of(context).videoTitle),
       ),
       body: sheet,

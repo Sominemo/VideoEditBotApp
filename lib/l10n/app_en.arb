@@ -18,6 +18,10 @@
             }
         }
     },
+    "home": "Home",
+    "@home": {
+        "description": "Title for Cupertino back button when root navigator pushes"
+    },
     "share": "Share",
     "@share": {
         "description": "Share button in different places"

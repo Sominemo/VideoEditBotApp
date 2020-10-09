@@ -67,9 +67,10 @@ class _VideosWelcomeState extends State<VideosWelcome> {
       );
     }
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
+    Navigator.of(context, rootNavigator: true).push(
+      platformPageRoute(
+        iosTitle: AppLocalizations.of(context).yourVideos,
+        context: context,
         builder: (context) => VideoListView(input, isDiscordMode),
       ),
     );
