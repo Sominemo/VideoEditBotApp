@@ -97,12 +97,12 @@
         "descripton": "Promo that describes the bot on Twitter description",
         "context": "Videos:Welcome:Twitter Promo"
     },
-    "commandsHelpSign": "Check out available features",
+    "commandsHelpSign": "Bot commands",
     "@commandsHelpSign": {
         "descripton": "Link for bot docs",
         "context": "Videos:Welcome:Commands help"
     },
-    "commandsHelpDescription": "Master all the bot with the growing list of arguments",
+    "commandsHelpDescription": "Learn about what Video Edit Bot is capable of to make your next masterpiece.",
     "@commandsHelpDescription": {
         "descripton": "Link for bot docs",
         "context": "Videos:Welcome:Commands help"
@@ -127,7 +127,7 @@
         "descripton": "Title of the message that explains that a server error just happened",
         "context": "Videos:Message:Server Error"
     },
-    "serverErrorText": "A server error occurred while trying to fetch your content. Please try again later",
+    "serverErrorText": "A server error occurred while trying to fetch your content. Please try again later.",
     "@serverErrorText": {
         "descripton": "Text of the message that explains that a server error just happened",
         "context": "Videos:Message:Server Error"
@@ -189,7 +189,7 @@
         "description": "Title for deletion warning if it's less than 24h",
         "context": "Videos:Video"
     },
-    "willBeDeletedInExplainer": "We keep videos only for 30 days",
+    "willBeDeletedInExplainer": "Your content is kept for at least 30 days",
     "@willBeDeletedInExplainer": {
         "description": "Explanation for deletion warning",
         "context": "Videos:Video"
@@ -244,7 +244,7 @@
         "descripton": "Enter Discord server ID block title",
         "context": "Discord:Welcome:Discord Server ID"
     },
-    "discordEnterIdDescription": "If you know your server's ID, you can paste it in here to get access to your most recent videos.",
+    "discordEnterIdDescription": "If you know your Discord server's ID, you can paste it in here to get access to your most recent videos.",
     "@discordEnterIdDescription": {
         "descripton": "Enter Discord server ID block description",
         "context": "Discord:Welcome:Discord Server ID"
