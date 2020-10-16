@@ -31,7 +31,7 @@ class _VideoListViewState extends State<VideoListView> {
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(isDiscordMode
+        title: Text(isDiscordMode
             ? AppLocalizations.of(context).discordMode
             : username + "'s " + AppLocalizations.of(context).yourVideos),
       ),
@@ -121,24 +121,24 @@ class _VideoListState extends State<VideoList> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PlatformText(
+                      Text(
                         title,
                         style: TextStyle(fontSize: 30),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: PlatformText(
+                        child: Text(
                           subtitle,
                           style: TextStyle(fontSize: 15),
                         ),
                       ),
                       if (ModalRoute.of(context)?.canPop ?? false)
-                        RaisedButton(
+                        PlatformButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
                           child:
-                              PlatformText(AppLocalizations.of(context).retry),
+                              Text(AppLocalizations.of(context).retry),
                         ),
                     ],
                   ),
@@ -149,7 +149,7 @@ class _VideoListState extends State<VideoList> {
         }
 
         if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: PlatformCircularProgressIndicator());
         }
 
         var count =
@@ -176,16 +176,17 @@ class _VideoListState extends State<VideoList> {
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Center(
-                    child: Icon(
-                      Icons.broken_image,
-                      size: 120,
+                    child: PlatformWidget(
+                      material: (_, __) => Icon(Icons.broken_image, size: 120),
+                      cupertino: (_, __) =>
+                          Icon(CupertinoIcons.xmark_square, size: 120),
                     ),
                   );
                 }
 
                 if (!snapshot.hasData) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: PlatformCircularProgressIndicator(),
                   );
                 }
 
@@ -230,15 +231,13 @@ class _VideoListItemState extends State<VideoListItem> {
         if (event == null) return widget;
 
         return Center(
-          child: CircularProgressIndicator(
-            value: event.cumulativeBytesLoaded / event.cumulativeBytesLoaded,
-          ),
+          child: PlatformCircularProgressIndicator(),
         );
       },
       errorBuilder: (context, object, stack) => Center(
-        child: Icon(
-          Icons.broken_image,
-          size: 120,
+        child: PlatformWidget(
+          material: (_, __) => Icon(Icons.broken_image, size: 120),
+          cupertino: (_, __) => Icon(CupertinoIcons.xmark_square, size: 120),
         ),
       ),
     );
@@ -275,14 +274,14 @@ class _VideoListItemState extends State<VideoListItem> {
                     children: <Widget>[
                       ListTile(
                           leading: Icon(Icons.file_download),
-                          title: PlatformText(
+                          title: Text(
                               AppLocalizations.of(context).download),
                           onTap: () {
                             downloadVideoLink(data);
                           }),
                       ListTile(
                         leading: Icon(Icons.share),
-                        title: PlatformText(AppLocalizations.of(context).share),
+                        title: Text(AppLocalizations.of(context).share),
                         onTap: () {
                           shareVideoLink(data);
                         },

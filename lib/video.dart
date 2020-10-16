@@ -109,7 +109,7 @@ class _VideoScreenState extends State<VideoScreen> {
                             Icon(CupertinoIcons.square_arrow_down),
                       ),
                       label:
-                          PlatformText(AppLocalizations.of(context).download),
+                          Text(AppLocalizations.of(context).download),
                       onPressed: () {
                         downloadVideoLink(data);
                       },
@@ -118,7 +118,7 @@ class _VideoScreenState extends State<VideoScreen> {
                     SizedBox(width: 10),
                     OutlineButton.icon(
                       icon: Icon(PlatformIcons(context).share),
-                      label: PlatformText(AppLocalizations.of(context).share),
+                      label: Text(AppLocalizations.of(context).share),
                       onPressed: () {
                         shareVideoLink(data);
                       },
@@ -128,7 +128,7 @@ class _VideoScreenState extends State<VideoScreen> {
                     OutlineButton.icon(
                       icon: Icon(PlatformIcons(context).info),
                       label:
-                          PlatformText(AppLocalizations.of(context).videoInfo),
+                          Text(AppLocalizations.of(context).videoInfo),
                       onPressed: () {
                         if (sheetController.isPanelClosed) {
                           sheetController.open();
@@ -152,8 +152,8 @@ class _VideoScreenState extends State<VideoScreen> {
                 child:
                     Icon(isDiscordMode ? VebIcons.discord : VebIcons.twitter),
               ),
-              title: PlatformText(username),
-              subtitle: PlatformText(isDiscordMode ? 'Discord' : 'Twitter'),
+              title: Text(username),
+              subtitle: Text(isDiscordMode ? 'Discord' : 'Twitter'),
             ),
           ),
           FutureBuilder(
@@ -164,7 +164,7 @@ class _VideoScreenState extends State<VideoScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(20),
                     child: Center(
-                      child: PlatformText(
+                      child: Text(
                           AppLocalizations.of(context).videoUnknownErrorTitle),
                     ),
                   ),
@@ -212,10 +212,10 @@ class _VideoScreenState extends State<VideoScreen> {
                       leading: CircleAvatar(
                         child: Icon(Icons.timelapse),
                       ),
-                      title: PlatformText(
+                      title: Text(
                         del,
                       ),
-                      subtitle: PlatformText(AppLocalizations.of(context)
+                      subtitle: Text(AppLocalizations.of(context)
                           .willBeDeletedInExplainer),
                     ),
                   ),
@@ -229,7 +229,7 @@ class _VideoScreenState extends State<VideoScreen> {
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: PlatformText(AppLocalizations.of(context).videoTitle),
+        title: Text(AppLocalizations.of(context).videoTitle),
       ),
       body: sheet,
     );

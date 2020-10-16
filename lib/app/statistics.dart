@@ -2,12 +2,15 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show sqrt, max;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:videoeditbot_app/services/api/global_queue.dart';
 import 'package:videoeditbot_app/services/api/types.dart';
 import 'package:videoeditbot_app/services/icons/veb_icons.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:videoeditbot_app/widgets/cupertino_card.dart';
+import 'package:videoeditbot_app/widgets/icon_tile.dart';
 
 Future<VebResponse> _fetchStats() {
   return Queue.api.call('stats.json', {});
@@ -31,7 +34,7 @@ class _StatisticsState extends State<Statistics> {
       future: _fetchStats(),
       builder: (context, AsyncSnapshot<VebResponse> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: PlatformCircularProgressIndicator());
         }
 
         if (snapshot.hasError) {
@@ -53,22 +56,22 @@ class _StatisticsState extends State<Statistics> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PlatformText(
+                      Text(
                         title,
                         style: TextStyle(fontSize: 30),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
-                        child: PlatformText(
+                        child: Text(
                           subtitle,
                           style: TextStyle(fontSize: 15),
                         ),
                       ),
-                      RaisedButton(
+                      PlatformButton(
                         onPressed: () {
                           transitionMethod(Statistics(transitionMethod));
                         },
-                        child: PlatformText(AppLocalizations.of(context).retry),
+                        child: Text(AppLocalizations.of(context).retry),
                       ),
                     ],
                   ),
@@ -145,21 +148,22 @@ class _StatisticsPageState extends State<StatisticsPage> {
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
 
-    return Container(
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Column(
           children: [
-            Card(
+            PlatformWidgetBuilder(
               child: ListView(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Icon(Icons.memory),
+                  IconTile(
+                    PlatformWidget(
+                      material: (_, __) => Icon(Icons.memory),
+                      cupertino: (_, __) => Icon(Icons.memory),
                     ),
-                    title: PlatformText(body['cpuName']),
-                    subtitle: PlatformText('${AppLocalizations.of(context).cpu}  |  ${body['cpuUsageTotal']}%'),
+                    Text(body['cpuName']),
+                    Text(
+                        '${AppLocalizations.of(context).cpu}  |  ${body['cpuUsageTotal']}%'),
                   ),
                   Divider(),
                   Padding(
@@ -179,22 +183,28 @@ class _StatisticsPageState extends State<StatisticsPage> {
                   )
                 ],
               ),
+              material: (_, child, __) => Card(child: child),
+              cupertino: (context, child, __) => CupertinoCard(child: child),
             ),
-            Card(
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(child: Icon(VebIcons.memory)),
-                      title: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          PlatformText('${body['memoryUsage']}  /'),
-                          PlatformText(' ${body['memoryCapacity']}'),
-                        ],
-                      ),
-                      subtitle: PlatformText(AppLocalizations.of(context).memory),
+            PlatformWidgetBuilder(
+              child: Column(
+                children: [
+                  IconTile(
+                    PlatformWidget(
+                      material: (_, __) => Icon(VebIcons.memory),
+                      cupertino: (_, __) =>
+                          Icon(CupertinoIcons.square_stack_3d_down_right),
                     ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text('${body['memoryUsage']}  /'),
+                        Text(' ${body['memoryCapacity']}'),
+                      ],
+                    ),
+                    Text(AppLocalizations.of(context).memory),
+                  ),
+                  if (isMaterial(context))
                     TweenAnimationBuilder(
                       tween: IntTween(
                         begin: 0,
@@ -211,8 +221,16 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         );
                       },
                     ),
-                  ],
-                )),
+                ],
+              ),
+              material: (_, child, __) => Card(
+                clipBehavior: Clip.antiAlias,
+                child: child,
+              ),
+              cupertino: (_, child, __) => CupertinoCard(
+                child: child,
+              ),
+            ),
             Card(
                 clipBehavior: Clip.antiAlias,
                 child: Column(
@@ -222,11 +240,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       title: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          PlatformText('${body['storageUsage']}  /'),
-                          PlatformText(' ${body['storageCapacity']}'),
+                          Text('${body['storageUsage']}  /'),
+                          Text(' ${body['storageCapacity']}'),
                         ],
                       ),
-                      subtitle: PlatformText(AppLocalizations.of(context).storage),
+                      subtitle: Text(AppLocalizations.of(context).storage),
                     ),
                     TweenAnimationBuilder(
                       tween: IntTween(
@@ -248,8 +266,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 )),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -276,9 +293,12 @@ class CpuCoreBlock extends StatelessWidget {
 
     return AnimatedContainer(
       duration: Duration(seconds: 2),
-      color: Theme.of(context).accentColor.withOpacity(usage / 100),
+      color: (isCupertino(context)
+              ? CupertinoTheme.of(context).primaryColor
+              : Theme.of(context).accentColor)
+          .withOpacity(usage / 100),
       child: Center(
-        child: PlatformText(usage.toString()),
+        child: Text(usage.toString()),
       ),
     );
   }

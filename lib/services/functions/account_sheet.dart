@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
-import 'package:videoeditbot_app/app/video_welcome.dart';
 import 'package:videoeditbot_app/services/icons/veb_icons.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:videoeditbot_app/services/settings/settings.dart';
+import 'package:videoeditbot_app/widgets/dismissible.dart';
 
 class AccountSheet extends StatefulWidget {
   AccountSheet({this.onchange});
@@ -94,7 +94,7 @@ class _AccountSheetState extends State<AccountSheet> {
                 twitter = null;
               });
             },
-            child: PlatformText(AppLocalizations.of(context).forgetTwitter),
+            child: Text(AppLocalizations.of(context).forgetTwitter),
             isDestructiveAction: true,
           ),
         if (discord != null)
@@ -106,18 +106,18 @@ class _AccountSheetState extends State<AccountSheet> {
                 discord = null;
               });
             },
-            child: PlatformText(AppLocalizations.of(context).forgetDiscord),
+            child: Text(AppLocalizations.of(context).forgetDiscord),
             isDestructiveAction: true,
           ),
       ];
       length = content.length;
 
       return CupertinoActionSheet(
-        title: PlatformText(AppLocalizations.of(context).rememberedAccounts),
-        message: PlatformText(AppLocalizations.of(context).noSignedInAccounts),
+        title: Text(AppLocalizations.of(context).rememberedAccounts),
+        message: Text(AppLocalizations.of(context).noSignedInAccounts),
         actions: content,
         cancelButton: CupertinoActionSheetAction(
-          child: PlatformText(AppLocalizations.of(context).cancel),
+          child: Text(AppLocalizations.of(context).cancel),
           isDefaultAction: true,
           onPressed: () {
             Navigator.pop(context);
@@ -134,8 +134,8 @@ class _AccountSheetState extends State<AccountSheet> {
                   child: Icon(
                 VebIcons.twitter,
               )),
-              title: PlatformText('Twitter'),
-              subtitle: PlatformText(twitter),
+              title: Text('Twitter'),
+              subtitle: Text(twitter),
             ),
             onDismissed: (direction) {
               Settings.prefs.remove('saved_username');
@@ -153,8 +153,8 @@ class _AccountSheetState extends State<AccountSheet> {
                   child: Icon(
                 VebIcons.discord,
               )),
-              title: PlatformText('Discord'),
-              subtitle: PlatformText(discord),
+              title: Text('Discord'),
+              subtitle: Text(discord),
             ),
             onDismissed: (direction) {
               Settings.prefs.remove('saved_discord_server_id');
@@ -175,7 +175,7 @@ class _AccountSheetState extends State<AccountSheet> {
             contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             title: Center(
               child:
-                  PlatformText(AppLocalizations.of(context).noSignedInAccounts),
+                  Text(AppLocalizations.of(context).noSignedInAccounts),
             ),
           ),
         );

@@ -137,18 +137,18 @@ class _VebHomescreenState extends State<VebHomescreen>
           transitionMethod,
           true,
         );
-      }),
+      }, UniqueKey()),
       VebScreen((transitionMethod) {
         return VideosWelcome(
           transitionMethod,
           false,
         );
-      }),
+      }, UniqueKey()),
       VebScreen((transitionMethod) {
         return Statistics(
           transitionMethod,
         );
-      }),
+      }, UniqueKey()),
     ];
 
     return PlatformTabScaffold(
@@ -160,7 +160,7 @@ class _VebHomescreenState extends State<VebHomescreen>
       items: sections,
       tabController: _tabController,
       appBarBuilder: (_, __) => PlatformAppBar(
-        title: PlatformText('Video Edit Bot'),
+        title: Text('Video Edit Bot'),
         trailingActions: [
           PlatformIconButton(
             padding: EdgeInsets.zero,
